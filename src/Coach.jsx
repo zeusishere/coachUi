@@ -18,7 +18,7 @@ const Coach = ({ coachData, seatNumbersBookedInCurrentReq = [] }) => {
   const numRows = 12;
   const numCols = 7;
   const lastRowNumCols = 3;
-
+  //  generates colour coded seating arrangement of coach
   const generateMatrixData = () => {
     const matrixData = [];
     // marks all seats as available (color green)

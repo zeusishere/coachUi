@@ -5,6 +5,7 @@ function NumberInputComponent(props) {
   const [inputValue, setInputValue] = useState("");
   const [isValid, setIsValid] = useState(true);
 
+  // handles input validation
   const handleChange = (event) => {
     let value = event.target.value;
     setInputValue(value);
@@ -12,7 +13,7 @@ function NumberInputComponent(props) {
       Number.isInteger(Number(value)) && Number(value) > 0 && Number(value) <= 7
     );
   };
-
+  // makes a req to the backend and reserve the seat
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (isValid) {

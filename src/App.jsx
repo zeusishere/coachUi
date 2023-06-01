@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchCoachData, resetCoach, reserveSeatsInCoach } from "./api/index";
+import { fetchCoachData, resetCoach } from "./api/index";
 import Button from "./Button";
 import LoadingSpinner from "./LoadingSpinner";
 import ErrorMessage from "./ErrorMessage";
@@ -7,15 +7,14 @@ import Coach from "./Coach";
 import "./App.css";
 import NumberInputComponent from "./NumberInputBox";
 function App() {
-  const [count, setCount] = useState(0);
   const [coachData, setCoachData] = useState(null);
   const [seatNumbersBooked, updateSeatNumbersBooked] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  //  makes an api call and updates state of coach
   const handleFetchCoachData = async () => {
     setLoading(true);
-
     try {
       const responseData = await fetchCoachData();
       setCoachData(responseData.coach);
@@ -25,8 +24,10 @@ function App() {
       setLoading(false);
     }
   };
+  // resets the coach to a empty state
   const resetCoachData = async () => {
     setLoading(true);
+    updateSeatNumbersBooked([]);
 
     try {
       const responseData = await resetCoach(coachData._id);
